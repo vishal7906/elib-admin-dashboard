@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Link , Outlet} from "react-router-dom"
+import { Link , Navigate, Outlet} from "react-router-dom"
 import {
   Bell,
   CircleUser,
@@ -17,8 +17,13 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem } from "@/components/ui/dropdown-menu"
+import useTokenStore from "@/store"
 
 const DashboardLayout = () => {
+  const token = useTokenStore((state) => state.token);
+  if(!token){
+    return <Navigate to={'/auth/login'} replace/>
+  }
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
     <div className="hidden border-r bg-muted/40 md:block">
