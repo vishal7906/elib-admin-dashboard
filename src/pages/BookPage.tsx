@@ -12,7 +12,6 @@ import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
 } from '@/components/ui/card';
@@ -133,7 +132,9 @@ const BooksPage = () => {
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent align="end">
                                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                                                    <Link to="/dashboard/books/edit">
                                                     <DropdownMenuItem>Edit</DropdownMenuItem>
+                                                    </Link>
                                                     <DropdownMenuItem>Delete</DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
@@ -145,11 +146,6 @@ const BooksPage = () => {
                     </Table> 
                   )}
                   </CardContent>
-                <CardFooter>
-                    <div className="text-xs text-muted-foreground">
-                        Showing <strong>1-10</strong> of <strong>32</strong> products
-                    </div>
-                </CardFooter>
             </Card>
         </div>
     );
