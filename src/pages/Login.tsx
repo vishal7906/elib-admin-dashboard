@@ -14,6 +14,7 @@ import { Link , useNavigate} from "react-router-dom";
 const LoginPage = () => {
   const navigate = useNavigate();
   const setToken = useTokenStore((state) => state.setToken);
+  const setUserId = useTokenStore((state)=>state.setUserId)
 
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -21,7 +22,10 @@ const LoginPage = () => {
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (response) => {
+      // console.log(response);
+      
       setToken(response.data.accessToken)
+      setUserId(response.data.userId)
       navigate('/dashboard/home')
     },
   })
@@ -29,7 +33,7 @@ const LoginPage = () => {
   const handleLogin = ()=>{
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
-    console.log("data ",{email,password});
+    // console.log("data ",{email,password});
 
     if(!email || !password){
       return alert('Email and Password are required')

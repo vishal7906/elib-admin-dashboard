@@ -1,4 +1,4 @@
-import {createBrowserRouter, Navigate} from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 import LoginPage from './pages/Login';
 import HomePage from './pages/HomePage';
 import Register from './pages/Register';
@@ -10,45 +10,43 @@ import EditBookPage from './pages/EditBookPage';
 
 export const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Navigate to={'/dashboard/home'}/>
+    path: '/',
+    element: <Navigate to={'/dashboard/home'} />
   },
-    {
-      path: "/dashboard",
-      element: <DashboardLayout />,
-      children:[
+  {
+    path: '/dashboard',
+    element: <DashboardLayout />,
+    children: [
       {
-        path:"home",
-        element:<HomePage/>
+        path: 'home',
+        element: <HomePage />
       },
       {
-        path:"books",
-        element:<BookPage/>
+        path: 'books',
+        element: <BookPage />
       },
       {
-        path:"books/create",
-        element:<CreateBook/>
+        path: 'books/create',
+        element: <CreateBook />
       },
       {
-        path:"books/edit",
-        element:<EditBookPage/>
+        path: 'books/edit/:id',
+        element: <EditBookPage />
       }
-      ],
-      
-    },
-    {
-      path:"/auth",
-      element:<AuthLayout/>,
-      children:[
-        {
-          path:"login",
-          element: <LoginPage />
-        },
-        {
-        path:"register",
+    ]
+  },
+  {
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'login',
+        element: <LoginPage />
+      },
+      {
+        path: 'register',
         element: <Register />
-        }
-      ]
-    }
-
-  ]);
+      }
+    ]
+  }
+]);

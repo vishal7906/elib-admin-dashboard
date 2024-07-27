@@ -30,19 +30,37 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table';
-import { getBooks } from '@/http/api';
+import { getBooks, deleteBook } from '@/http/api';
 import { Book } from '@/types';
-import { useQuery } from '@tanstack/react-query';
-import { CirclePlus, LoaderCircle, MoreHorizontal } from 'lucide-react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { CirclePlus, LoaderCircle, MoreHorizontal, Pencil, Trash } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const BooksPage = () => {
+    const queryClient = useQueryClient();
 
+    // Fetch books
     const { data, isLoading, isError } = useQuery({
         queryKey: ['books'],
         queryFn: getBooks,
         staleTime: 10000, // in Milli-seconds
     });
+
+    // Mutation for deleting a book
+    const deleteMutation = useMutation({
+        mutationFn: (bookId: string) => deleteBook(bookId),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['books'] });
+            console.log('Book deleted successfully');
+        },
+    });
+
+    // Delete handler
+    const handleDelete = (bookId: string) => {
+        if (window.confirm('Are you sure you want to delete this book?')) {
+            deleteMutation.mutate(bookId);
+        }
+    };
 
     return (
         <div>
@@ -74,13 +92,13 @@ const BooksPage = () => {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {isLoading?(
+                  {isLoading ? (
                     <div className='flex justify-center items-center h-full'>
                         <div><LoaderCircle className="animate-spin"/></div>
                     </div>
-                  ): isError?(
+                  ) : isError ? (
                     <div className='text-red-500'>Error while displaying Books</div>
-                  ):(
+                  ) : (
                     <Table>
                         <TableHeader>
                             <TableRow>
@@ -132,10 +150,17 @@ const BooksPage = () => {
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent align="end">
                                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                    <Link to="/dashboard/books/edit">
-                                                    <DropdownMenuItem>Edit</DropdownMenuItem>
+                                                    <Link to={`/dashboard/books/edit/${book._id}`}>
+                                                        <DropdownMenuItem className='cursor-pointer'>
+                                                            <Pencil className='mr-2'/>
+                                                            Edit
+                                                            </DropdownMenuItem>
                                                     </Link>
-                                                    <DropdownMenuItem>Delete</DropdownMenuItem>
+                                                    <DropdownMenuItem onClick={() => handleDelete(book._id)}
+                                                        className="cursor-pointer text-red-500">
+                                                        <Trash className="mr-2" />
+                                                        Delete
+                                                    </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
                                         </TableCell>
@@ -145,7 +170,7 @@ const BooksPage = () => {
                         </TableBody>
                     </Table> 
                   )}
-                  </CardContent>
+                </CardContent>
             </Card>
         </div>
     );

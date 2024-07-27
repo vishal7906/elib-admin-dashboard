@@ -17,6 +17,7 @@ import {
     CircleUser,
     Home,
     LineChart,
+    LogOut,
     Menu,
     Package,
     Package2,
@@ -45,7 +46,7 @@ const DashboardLayout = () => {
                     <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
                         <Link to="/" className="flex items-center gap-2 font-semibold">
                             <Package2 className="h-6 w-6" />
-                            <span className="">Coder's Book</span>
+                            <span>Coder's Book</span>
                         </Link>
                         <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
                             <Bell className="h-4 w-4" />
@@ -78,12 +79,11 @@ const DashboardLayout = () => {
                         </nav>
                     </div>
                     <div className="mt-auto p-4">
-                        <Card x-chunk="dashboard-02-chunk-0">
+                        <Card className="sticky top-0">
                             <CardHeader className="p-2 pt-0 md:p-4">
                                 <CardTitle>Upgrade to Pro</CardTitle>
                                 <CardDescription>
-                                    Unlock all features and get unlimited access to our support
-                                    team.
+                                    Unlock all features and get unlimited access to our support team.
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
@@ -147,7 +147,7 @@ const DashboardLayout = () => {
                                 </Link>
                             </nav>
                             <div className="mt-auto p-4">
-                                <Card>
+                                <Card className="sticky top-0">
                                     <CardHeader>
                                         <CardTitle>Upgrade to Pro</CardTitle>
                                         <CardDescription>
@@ -190,7 +190,8 @@ const DashboardLayout = () => {
                             <DropdownMenuItem>Support</DropdownMenuItem>
                             <DropdownMenuSeparator />
                             <DropdownMenuItem>
-                                <Button onClick={logout} variant={'link'}>
+                                <Button onClick={logout} >
+                                <LogOut size={15} className='mr-2'/>
                                     Logout
                                 </Button>
                             </DropdownMenuItem>
