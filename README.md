@@ -14,7 +14,7 @@ Node.js (v14.x or later)
 npm (v6.x or later)
 MongoDB (v4.x or later)
 
-Output -:
+
 ![Screenshot 2024-07-28 171235](https://github.com/user-attachments/assets/0197d7ad-c168-4223-9466-6790b3fd943a)
 ![Screenshot 2024-07-28 171226](https://github.com/user-attachments/assets/3ddcb482-68e6-46cd-bd53-acf5f5ee0268)
 ![Screenshot 2024-07-28 171129](https://github.com/user-attachments/assets/6c84494a-f391-4e31-a986-a65b09407946)
