@@ -1,30 +1,22 @@
-# React + TypeScript + Vite
+Overview
+The Admin Dashboard for the eBook Library allows administrators to manage the library's collection, user accounts, and system settings. The dashboard provides a user-friendly interface for performing CRUD (Create, Read, Update, Delete) operations on books and users, as well as monitoring system performance and logs.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Book Management: Add, update, delete, and view books in the library.
+User Management: Manage user accounts, including creation, deletion, and role assignments.
+Analytics: View system usage statistics and performance metrics.
+Settings: Configure system settings and preferences.
+Logs: Monitor system logs for troubleshooting and audit purposes.
 
-Currently, two official plugins are available:
+Getting Started
+Prerequisites
+Node.js (v14.x or later)
+npm (v6.x or later)
+MongoDB (v4.x or later)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Output -:
+![Screenshot 2024-07-28 171235](https://github.com/user-attachments/assets/0197d7ad-c168-4223-9466-6790b3fd943a)
+![Screenshot 2024-07-28 171226](https://github.com/user-attachments/assets/3ddcb482-68e6-46cd-bd53-acf5f5ee0268)
+![Screenshot 2024-07-28 171129](https://github.com/user-attachments/assets/6c84494a-f391-4e31-a986-a65b09407946)
+![Screenshot 2024-07-28 171111](https://github.com/user-attachments/assets/1cb24f0f-d04d-4612-be6c-ee6e897f3387)
+![Screenshot 2024-07-28 171055](https://github.com/user-attachments/assets/bd6c5fe6-9cd9-45ab-a6fa-a7e6e342a803)
